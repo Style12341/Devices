@@ -18,7 +18,7 @@ class DeviceFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'tags' => 'hot, cold',
+            'tags' => 'temperature, pressure',
             'company' => fake()->company(),
             'location' => fake()->city(),
             'email' => fake()->companyEmail(),
