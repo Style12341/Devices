@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Middleware\UserIsOwner;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,8 @@ use App\Http\Controllers\DeviceController;
 */
 
 Route::controller(DeviceController::class)->group(function () {
-    //All devices
-    Route::get('/', 'index');
-    // Single Device
-    Route::get('/devices/{device}', 'show');
-    
+
+
     Route::get('/devices/manage', 'manage')->middleware('auth');
     //Store device data
     Route::post('/devices', 'store')->middleware('auth');
@@ -34,7 +32,10 @@ Route::controller(DeviceController::class)->group(function () {
     Route::put('/devices/{device}', 'update')->middleware('auth');
     // Delete Device
     Route::delete('/devices/{device}', 'destroy')->middleware('auth');
-    
+    //All devices
+    Route::get('/', 'index');
+    // Single Device
+    Route::get('/devices/{device}', 'show');
 });
 
 

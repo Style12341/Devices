@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\User;
+
 class DeviceController extends Controller
 {
-    public function manage(){
-        return view('devices.manage',['devices'=>auth()->user()->devices()->get()]);
+    public function manage()
+    {
+        return view('devices.manage', [
+            'devices' => auth()->user()->devices()->get()
+        ]);
     }
     //Show all devices
     public function index()
@@ -31,6 +34,9 @@ class DeviceController extends Controller
     }
     public function edit(Device $device)
     {
+        if ($device->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
         return view('devices.edit', ['device' => $device]);
     }
     public function store(Request $request)
@@ -53,6 +59,8 @@ class DeviceController extends Controller
     }
     public function update(Request $request, Device $device)
     {
+        //Ensure loggged in user is owner
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => ['required'],
@@ -64,14 +72,18 @@ class DeviceController extends Controller
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
+
         $device->update($formFields);
 
         return redirect('/')->with('message', 'Device updated succesfully!');
     }
     public function destroy(Device $device)
     {
+        //Ensure loggged in user is owner
+        if ($device->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
         $device->delete();
         return redirect('/')->with('message', 'Device deleted succesfully');
     }
-    
 }
