@@ -13,7 +13,7 @@
                         <tr class="border-gray-300">
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
                                 <a href="show.html">
-                                    {{ $device->title }}
+                                    {{ $device->name }}
                                 </a>
                             </td>
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">

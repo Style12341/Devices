@@ -42,7 +42,7 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'title' => 'required',
+            'name' => 'required',
             'company' => ['required', Rule::unique('devices', 'company')],
             'location' => 'required',
             'email' => ['required', 'email'],
@@ -62,7 +62,7 @@ class DeviceController extends Controller
         //Ensure loggged in user is owner
 
         $formFields = $request->validate([
-            'title' => 'required',
+            'name' => 'required',
             'company' => ['required'],
             'location' => 'required',
             'email' => ['required', 'email'],

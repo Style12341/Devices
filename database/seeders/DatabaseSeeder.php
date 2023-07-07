@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         );
         Device::create(
             [
-                'title' => "Heated Chamber",
+                'name' => "Heated Chamber",
                 'user_id' => $user->id,
                 'tags' => 'temperature',
                 'logo' => 'null',
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         );
         Device::create(
             [
-                'title' => "Heated Chamber 2",
+                'name' => "Heated Chamber 2",
                 'user_id' => $user->id,
                 'tags' => 'hot, cold',
                 'company' => 'Bernard Ingeneieria',

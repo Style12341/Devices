@@ -18,10 +18,10 @@
             </div>
 
             <div class="mb-6">
-                <label for="title" class="inline-block text-lg mb-2">Device Title</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title"
-                    placeholder="Example: Senior Laravel Developer" value="{{ old('title') }}" />
-                @error('title')
+                <label for="name" class="inline-block text-lg mb-2">Device Title</label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+                    placeholder="Example: Senior Laravel Developer" value="{{ old('name') }}" />
+                @error('name')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -70,7 +70,7 @@
                     Device Description
                 </label>
                 <textarea class="border border-gray-200 rounded p-2 w-full" name="description" rows="10"
-                    placeholder="Include tasks, requirements, salary, etc"><{{ old('description') }} </textarea>
+                    placeholder="Include tasks, requirements, salary, etc">{{ old('description') }} </textarea>
                 @error('description')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror

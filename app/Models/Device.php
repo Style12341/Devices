@@ -11,7 +11,7 @@ class Device extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'user_id',
         'company',
         'location',
@@ -25,7 +25,7 @@ class Device extends Model
         if ($filters['tag'] ?? false) {
             $query->where('tags', 'like', '%' . $filters['tag'] . '%');
         } else if ($filters['search'] ?? false) {
-            $query->where('title', 'like', '%' . $filters['search'] . '%')
+            $query->where('name', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('description', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('tags', 'like', '%' . $filters['search'] . '%')
                 ->orWhere('company', 'like', '%' . $filters['search'] . '%');

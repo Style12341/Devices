@@ -9,7 +9,7 @@
                     src="{{ $device->logo ? asset('storage/' . $device->logo) : asset('/images/no-image.png') }}"
                     alt="" />
 
-                <h3 class="text-2xl mb-2">{{ $device->title }}</h3>
+                <h3 class="text-2xl mb-2">{{ $device->name }}</h3>
                 <div class="text-xl font-bold mb-4">{{ $device->company }}</div>
                 <x-device-tags :tagsCsv="$device->tags" />
                 <div class="text-lg my-4">

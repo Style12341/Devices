@@ -8,7 +8,7 @@
             alt="" />
         <div>
             <h3 class="text-2xl">
-                <a href="/devices/{{ $device->id }}">{{ $device->title }}</a>
+                <a href="/devices/{{ $device->id }}">{{ $device->name }}</a>
             </h3>
             <div class="text-xl font-bold mb-4">{{ $device->company }}</div>
             <x-device-tags :tagsCsv="$device->tags" />

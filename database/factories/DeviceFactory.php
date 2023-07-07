@@ -17,7 +17,7 @@ class DeviceFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
+            'name' => fake()->sentence(),
             'tags' => 'temperature, pressure',
             'company' => fake()->company(),
             'location' => fake()->city(),

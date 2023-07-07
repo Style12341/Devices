@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Edit a Device
             </h2>
-            <p class="mb-4">Edit: {{$device->title}}</p>
+            <p class="mb-4">Edit: {{$device->name}}</p>
         </header>
         <form method="POST" action="/devices/{{$device->id}}" enctype="multipart/form-data">
             @csrf
@@ -19,10 +19,10 @@
             </div>
 
             <div class="mb-6">
-                <label for="title" class="inline-block text-lg mb-2">Device Title</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title"
-                    placeholder="Example: Senior Laravel Developer" value="{{ $device->title }}" />
-                @error('title')
+                <label for="name" class="inline-block text-lg mb-2">Device name</label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+                    placeholder="Example: Senior Laravel Developer" value="{{ $device->name }}" />
+                @error('name')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
