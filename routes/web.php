@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Device;
+use App\Models\System;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\SystemController;
 use App\Http\Middleware\UserIsOwner;
 
 /*
@@ -18,24 +18,24 @@ use App\Http\Middleware\UserIsOwner;
 |
 */
 
-Route::controller(DeviceController::class)->group(function () {
+Route::controller(SystemController::class)->group(function () {
 
 
-    Route::get('/devices/manage', 'manage')->middleware('auth');
-    //Store device data
-    Route::post('/devices', 'store')->middleware('auth');
+    Route::get('/systems/manage', 'manage')->middleware('auth');
+    //Store system data
+    Route::post('/systems', 'store')->middleware('auth');
     //Show create form
-    Route::get('/devices/create', 'create')->middleware('auth');
+    Route::get('/systems/create', 'create')->middleware('auth');
     // Show edit form
-    Route::get('/devices/{device}/edit', 'edit')->middleware('auth');
-    // Update Device
-    Route::put('/devices/{device}', 'update')->middleware('auth');
-    // Delete Device
-    Route::delete('/devices/{device}', 'destroy')->middleware('auth');
-    //All devices
+    Route::get('/systems/{system}/edit', 'edit')->middleware('auth');
+    // Update System
+    Route::put('/systems/{system}', 'update')->middleware('auth');
+    // Delete System
+    Route::delete('/systems/{system}', 'destroy')->middleware('auth');
+    //All systems
     Route::get('/', 'index');
-    // Single Device
-    Route::get('/devices/{device}', 'show');
+    // Single System
+    Route::get('/systems/{system}', 'show');
 });
 
 

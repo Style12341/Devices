@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Register
             </h2>
-            <p class="mb-4">Create an account to create devices</p>
+            <p class="mb-4">Create an account to create systems</p>
         </header>
 
         <form method="POST" action="/users">

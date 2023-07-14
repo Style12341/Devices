@@ -9,16 +9,16 @@ class="relative h-72 bg-laravel flex flex-col justify-center align-center text-c
 
 <div class="z-10">
     <h1 class="text-6xl font-bold uppercase text-white">
-        Devi<span class="text-black">ces</span>
+        Sys<span class="text-black">Tems</span>
     </h1>
     <p class="text-2xl text-gray-200 font-bold my-4">
-        Find your device or create your own
+        Find your system or create your own
     </p>
     <div>
         <a
             href="/register"
             class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-red-500 hover:border-red-600"
-            >Sign Up to create a device</a
+            >Sign Up to create a system</a
         >
     </div>
 </div>

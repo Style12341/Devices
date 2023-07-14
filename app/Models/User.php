@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Device;
+use App\Models\System;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,8 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    //Relationsip with Devices
-    public function devices(){
-        return $this->hasMany(Device::class,'user_id');
+    //Relationsip with Systems
+    public function systems(){
+        return $this->hasMany(System::class,'user_id');
     }
 }

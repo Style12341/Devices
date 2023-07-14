@@ -6,14 +6,14 @@
         <x-card class="p-10">
             <div class="flex flex-col items-center justify-center text-center">
                 <img class="w-48 mr-6 mb-6"
-                    src="{{ $device->logo ? asset('storage/' . $device->logo) : asset('/images/no-image.png') }}"
+                    src="{{ $system->logo ? asset('storage/' . $system->logo) : asset('/images/no-image.png') }}"
                     alt="" />
 
-                <h3 class="text-2xl mb-2">{{ $device->name }}</h3>
-                <div class="text-xl font-bold mb-4">{{ $device->company }}</div>
-                <x-device-tags :tagsCsv="$device->tags" />
+                <h3 class="text-2xl mb-2">{{ $system->name }}</h3>
+                <div class="text-xl font-bold mb-4">{{ $system->company }}</div>
+                <x-system-tags :tagsCsv="$system->tags" />
                 <div class="text-lg my-4">
-                    <i class="fa-solid fa-location-dot"></i> {{ $device->location }}
+                    <i class="fa-solid fa-location-dot"></i> {{ $system->location }}
                 </div>
                 <div class="border border-gray-200 w-full mb-6"></div>
                 <div>
@@ -21,9 +21,9 @@
                         Job Description
                     </h3>
                     <div class="text-lg space-y-6">
-                        {{ $device->description }}
+                        {{ $system->description }}
 
-                        <a href="mailto:{{ $device->email }}"
+                        <a href="mailto:{{ $system->email }}"
                             class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"><i
                                 class="fa-solid fa-envelope"></i>
                             Contact Employer</a>
@@ -32,12 +32,12 @@
                 </div>
             </div>
         </x-card>
-        @if (auth()->id() == $device->user_id)
+        @if (auth()->id() == $system->user_id)
             <x-card class="mt-4 p-2 flex space-x-6">
-                <a href="/devices/{{ $device->id }}/edit">
+                <a href="/systems/{{ $system->id }}/edit">
                     <i class="fa-solid fa-pencil"></i> Edit
                 </a>
-                <form method="POST" action="/devices/{{ $device->id }}">
+                <form method="POST" action="/systems/{{ $system->id }}">
                     @csrf
                     @method('DELETE')
                     <button class="text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\SystemController;
 use App\Models\User;
-use App\Models\Device;
+use App\Models\System;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth:sanctum']], function (Request $request) {
-    Route::post('/devices/properties', [DeviceController::class, 'storeProperties']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/systems/properties', [SystemController::class, 'storeProperties']);
 });
 
-Route::get('/devices', function () {
-    return Device::all();
+Route::get('/systems', function () {
+    return System::all();
 });
 
 

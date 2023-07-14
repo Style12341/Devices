@@ -2,48 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Device;
+use App\Models\System;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class DeviceController extends Controller
+class SystemController extends Controller
 {
     public function manage()
     {
-        return view('devices.manage', [
-            'devices' => auth()->user()->devices()->get()
+        return view('Systems.manage', [
+            'Systems' => auth()->user()->Systems()->get()
         ]);
     }
-    //Show all devices
+    //Show all systems
     public function index()
     {
-        return view('devices.index', [
-            'devices' => Device::latest()->filter(request(['tag', 'search']))->paginate(6)
+        return view('systems.index', [
+            'systems' => System::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
     }
-    //Show single device 
-    public function show(Device $device)
+    //Show single system 
+    public function show(System $system)
     {
-        return view('devices.show', [
-            'device' => $device
+        return view('systems.show', [
+            'system' => $system
         ]);
     }
     public function create()
     {
-        return view('devices.create');
+        return view('systems.create');
     }
-    public function edit(Device $device)
+    public function edit(System $system)
     {
-        if ($device->user_id != auth()->id()) {
+        if ($system->user_id != auth()->id()) {
             abort(403, 'Unauthorized Action');
         }
-        return view('devices.edit', ['device' => $device]);
+        return view('systems.edit', ['system' => $system]);
     }
     public function store(Request $request)
     {
         $formFields = $request->validate([
             'name' => 'required',
-            'company' => ['required', Rule::unique('devices', 'company')],
+            'company' => ['required', Rule::unique('systems', 'company')],
             'location' => 'required',
             'email' => ['required', 'email'],
             'tags' => 'required',
@@ -53,11 +53,11 @@ class DeviceController extends Controller
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
         $formFields['user_id'] = auth()->id();
-        Device::create($formFields);
+        System::create($formFields);
 
-        return redirect('/')->with('message', 'Device created succesfully!');
+        return redirect('/')->with('message', 'System created succesfully!');
     }
-    public function update(Request $request, Device $device)
+    public function update(Request $request, System $system)
     {
         //Ensure loggged in user is owner
 
@@ -73,17 +73,17 @@ class DeviceController extends Controller
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
-        $device->update($formFields);
+        $system->update($formFields);
 
-        return redirect('/')->with('message', 'Device updated succesfully!');
+        return redirect('/')->with('message', 'System updated succesfully!');
     }
-    public function destroy(Device $device)
+    public function destroy(System $system)
     {
         //Ensure loggged in user is owner
-        if ($device->user_id != auth()->id()) {
+        if ($system->user_id != auth()->id()) {
             abort(403, 'Unauthorized Action');
         }
-        $device->delete();
-        return redirect('/')->with('message', 'Device deleted succesfully');
+        $system->delete();
+        return redirect('/')->with('message', 'System deleted succesfully');
     }
 }

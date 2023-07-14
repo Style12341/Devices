@@ -8,21 +8,21 @@
 
         <table class="w-full table-auto rounded-sm">
             <tbody>
-                @unless ($devices->isEmpty())
-                    @foreach ($devices as $device)
+                @unless ($systems->isEmpty())
+                    @foreach ($systems as $system)
                         <tr class="border-gray-300">
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
                                 <a href="show.html">
-                                    {{ $device->name }}
+                                    {{ $system->name }}
                                 </a>
                             </td>
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="/devices/{{ $device->id }}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i
+                                <a href="/systems/{{ $system->id }}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i
                                         class="fa-solid fa-pen-to-square"></i>
                                     Edit</a>
                             </td>
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <form method="POST" action="/devices/{{ $device->id }}">
+                                <form method="POST" action="/systems/{{ $system->id }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>
@@ -33,7 +33,7 @@
                 @else
                     <tr class="border-gray-300">
                         <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                            <p class="text-center">No Devices Found</p>
+                            <p class="text-center">No Systems Found</p>
                         </td>
                     </tr>
                 @endunless

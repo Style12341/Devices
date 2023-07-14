@@ -3,12 +3,21 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Machine;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Device extends Model
+class System extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     protected $fillable = [
         'name',
@@ -18,7 +27,10 @@ class Device extends Model
         'email',
         'description',
         'tags',
-        'logo'
+        'logo',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
     public function scopeFilter($query, array $filters)
     {
@@ -36,5 +48,9 @@ class Device extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+    //Relationsip with Systems
+    public function systems()
+    {
+        return $this->hasMany(Machine::class, 'system_id');
+    }
 }

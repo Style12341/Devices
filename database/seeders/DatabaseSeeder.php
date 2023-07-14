@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Device;
+use App\Models\System;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        Device::factory(6)->create(
+        System::factory(6)->create(
             [
                 'user_id' => $user->id
             ]
         );
-        Device::create(
+        System::create(
             [
                 'name' => "Heated Chamber",
                 'user_id' => $user->id,
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Camara de temperatura controlada de 10ºC a 60ºC'
             ]
         );
-        Device::create(
+        System::create(
             [
                 'name' => "Heated Chamber 2",
                 'user_id' => $user->id,

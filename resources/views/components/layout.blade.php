@@ -22,7 +22,7 @@
             },
         };
     </script>
-    <title>Devices | List of available devices</title>
+    <title>Systems | List of available systems</title>
 </head>
 
 <body class="mb-48">
@@ -36,8 +36,8 @@
                     </span>
                 </li>
                 <li>
-                    <a href="/devices/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i>
-                        Manage Devices</a>
+                    <a href="/systems/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i>
+                        Manage Systems</a>
                 </li>
                 <li>
                     <form action="/logout" method="POST" class="inline">
@@ -68,7 +68,7 @@
         class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
         <p class="ml-2">Copyright &copy; 2023, All Rights reserved</p>
 
-        <a href="/devices/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
+        <a href="/systems/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
     </footer>
     <x-flash-message />
 </body>
